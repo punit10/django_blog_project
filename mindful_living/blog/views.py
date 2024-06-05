@@ -62,6 +62,10 @@ class DraftListView(LoginRequiredMixin, UpdateView):
 
 # Comments section #####################################
 ########################################################
+def post_publish(request, pk ):
+    post = get_object_or_404(Post, pk=post.pk)
+    post.publish
+
 
 @login_required()
 def add_comment_to_post(request, pk):
@@ -76,4 +80,19 @@ def add_comment_to_post(request, pk):
         else:
             form = CommentForm()
             return render(request, 'blog/comment_form.html', {form: form})
+
+
+@login_required()
+def comment_approve(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approve()
+    return redirect('post_detail', pk=comment.post.pk)
+
+
+@login_required()
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    post_pk = comment.post.pk
+    comment.delete()
+    return redirect('post_detail', pk=post_pk)
 
