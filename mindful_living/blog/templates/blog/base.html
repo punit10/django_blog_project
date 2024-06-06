@@ -1,5 +1,5 @@
 <!doctype html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,11 +25,11 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand bigbrand" href="{% url 'index' %}">Mindful Living!</a>
+    <a class="navbar-brand bigbrand" href="#">Mindful Living!</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li>
-          <a class="nav-link active" href="{% url 'blog_app:register' %}">About</a>
+          <a class="nav-link active" href="{% url 'blog:about_view' %}">About</a>
         </li>
         <li>
           <a class="nav-link active" href="www.github.com">Github</a>
@@ -48,10 +48,10 @@
            <a href="{% url 'post_new' %}">New Post</a>
        </li>
        <li>
-           <a href="{% url 'post_new' %}">Drafts</a>
+           <a href="{% url 'post_draft_list' %}">Drafts</a>
        </li>
        <li>
-           <a href="{% url 'post_new' %}">Logout</a>
+           <a href="{% url 'logout' %}">Logout</a>
        </li>
        <li>
            <a>{{ user.username }}</a>

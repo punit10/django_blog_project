@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="centerstage">
+    <h2>Welcome to Mindful Living - Your Awesome Guide </h2>
+    {% for post in post_list %}
+    <div class="post">
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <div class="date">
+        <p>Published On: {{post.published|date:"D M Y"}}</p>
+        </div>
+        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
